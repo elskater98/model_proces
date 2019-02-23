@@ -10,7 +10,7 @@ class Photo(models.Model):
     RESOLUTION_STATUS = (('HD',('1280×720 píxels')), ('FHD','1920×1080 pixels'),
                          ('QHD','2560*1440 pixels'), ('UHD','3840×2160 píxels'))
 
-    select_resolution=models.CharField(max_length=1, choices=RESOLUTION_STATUS, blank=False, default='FHD',
+    select_resolution=models.CharField(max_length=3, choices=RESOLUTION_STATUS, blank=False, default='FHD',
                               help_text='Pick up the resolution')
 
     RATING_CHOICES=((1, 'one'), (2, 'two'), (3, 'three'), (4, 'four'), (5, 'five'))
