@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Photo(models.Model):
     name = models.CharField(max_length=200,help_text="Enter a name to the snap",null=False)
-    picture=models.ImageField(default='PICTURE_DEFAULT_NAME',help_text='Choose a picture')
+    picture=models.ImageField(upload_to='repository/images/',help_text='Choose a picture')
 
     RESOLUTION_STATUS = (('HD',('1280×720 píxels')), ('FHD','1920×1080 pixels'),
                          ('QHD','2560*1440 pixels'), ('UHD','3840×2160 píxels'))
@@ -19,5 +19,9 @@ class Photo(models.Model):
 
     author=models.ForeignKey(User,default=1,on_delete=models.SET_DEFAULT)
 
+    def __str__(self):
+        return str(self.picture)
+
 class History_connections(models.Model):
     date = models.DateTimeField()
+
