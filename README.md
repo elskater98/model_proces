@@ -7,7 +7,7 @@ aquesta tindra la funcionalitat de emmagatzemar les imatges dels usuaris registr
 - [x] Registració de l'aplicació
 - [x] Conectar el mapeig amb les URLS
 - [x] Definir els models que s'utilitzaran en la Base De Dades
-  - [ ] Photo
+  - [x] Photo
   - [ ] History_Connections
 - [ ] Definir les funcions dels models
 - [x] Registrar els models
