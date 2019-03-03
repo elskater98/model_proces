@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 # Create your models here.
 
@@ -7,10 +8,7 @@ from django.contrib.auth.models import User
 class Photo(models.Model):
 
     name = models.CharField(max_length=200,help_text="Enter a name to the snap",null=False)
-    picture=models.ImageField(upload_to='repository/images/',help_text='Choose a picture')
-
-    name = models.CharField(max_length=20, null=False)
-    picture = models.ImageField(upload_to='repository/images')
+    picture = models.ImageField(default="default.png")
 
     RESOLUTION_STATUS = (('HD', '1280×720 píxels'), ('FHD', '1920×1080 pixels'),
                          ('QHD', '2560*1440 pixels'), ('UHD', '3840×2160 pixels'))
@@ -24,11 +22,13 @@ class Photo(models.Model):
     author = models.ForeignKey(User, default=1, on_delete=models.SET_DEFAULT)
 
     def __str__(self):
-        return "{0} {1}".format(self.name, self.author)
+        return self.name+str(self.author)
 
 
 class History_connections(models.Model):
     date = models.DateTimeField()
+
+
 
 
 
