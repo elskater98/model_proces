@@ -21,7 +21,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('repository/',include('repository.urls')),
+    path('',include('repository.urls')),
 
     # path('', RedirectView.as_view(url='/repository/', permanent=True)),
 ]
