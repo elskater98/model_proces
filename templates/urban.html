@@ -22,15 +22,17 @@
 
 		<article>
 			<header>
-				<h1>Imagenes Recientes</h1>
+				<h1>URBAN</h1>
 			</header>
 
 			<div class="content">
             {% block content %}
                 {% for i in photo %}
+                    {% if i.select_theme == "URBAN" %}
                     <img src="{{ i.picture.url }}" width="500px" />
                     <p> Title: {{ i.name }}
                     Author: {{ i.author }}</p>
+                    {% endif %}
                 {% endfor %}
             {% endblock %}
 			</div>
