@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <title>Homepage</title>
 </head>
+
 <body>
     <h1>PhotoBook</h1>
-    <h4>Themes</h4>
-    <lu>
-        <li>Nature</li>
-        <li>Abstract</li>
-    </lu>
+
+      {% block content %}
+        <img src="{{ photo.picture.url }}">
+      {% endblock %}
+
 
 </body>
 </html>
