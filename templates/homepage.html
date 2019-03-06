@@ -9,12 +9,11 @@
 
 <body>
    <header id="main-header">
-            <span class="site-name">PHOTO BANK</span>
-
+            <a class="site-name" href="{% url 'homepage' %}">PHOTO BANK</a>
 		<nav>
 			<ul>
-				<li><a href="#">Inicio</a></li>
-				<li><a href="#">Acerca de</a></li>
+				<li><a href="{% url 'urban' %}">Urban Theme</a></li>
+				<!--<li><a href="#">Acerca de</a></li>-->
 			</ul>
 		</nav><!-- / nav -->
    </header>
