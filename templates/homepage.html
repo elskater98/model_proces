@@ -1,16 +1,52 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Homepage</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
-    <h1>PhotoBook</h1>
+   <header id="main-header">
 
-      {% block content %}
-        <img src="{{ photo.picture.url }}">
-      {% endblock %}
+		<a id="logo-header" href="#">
+			<span class="site-name">PHOTO BANK</span>
+		</a> <!-- / #logo-header -->
+
+		<nav>
+			<ul>
+				<li><a href="#">Inicio</a></li>
+				<li><a href="#">Acerca de</a></li>
+			</ul>
+		</nav><!-- / nav -->
+   </header>
+   <section id="main-content">
+
+		<article>
+			<header>
+				<h1>Imagenes Recientes</h1>
+			</header>
+
+			<div class="content">
+            {% block content %}
+                {% for i in photo %}
+                    <img src="{{ i.picture.url }}" width="500px" />
+                    <p> Title: {{ i.name }}
+                    Author: {{ i.author }}</p>
+                {% endfor %}
+            {% endblock %}
+			</div>
+
+		</article> <!-- /article -->
+
+   </section> <!-- / #main-content -->
+
+    <footer id="main-footer">
+		<p>&copy; 2019 - Django Model del proces</p>
+	</footer> <!-- / #main-footer -->
+
+
 
 
 </body>

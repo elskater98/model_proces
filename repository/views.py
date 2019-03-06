@@ -4,5 +4,5 @@ from .models import Photo
 
 
 def homepage(request):
-    photo = Photo()
+    photo = Photo.objects.all()
     return render(request,'homepage.html',context={'photo':photo})
