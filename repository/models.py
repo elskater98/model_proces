@@ -3,6 +3,11 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
+class Theme(models.Model):
+    name = models.CharField(max_length=32, default="", blank=False)
+
+    def __str__(self):
+        return self.name
 
 class Photo(models.Model):
     name = models.CharField(max_length=64, help_text="Enter a name to the snap", null=False)
@@ -11,7 +16,7 @@ class Photo(models.Model):
 
     author = models.ForeignKey(User, default=1, on_delete=models.SET_DEFAULT)
 
-    select_theme=models.ManyToManyField('Theme')
+    select_theme=models.ManyToManyField(Theme, blank=True)
 
     RESOLUTION_STATUS = (('HD', '1280×720 píxels'), ('FHD', '1920×1080 pixels'),
                          ('QHD', '2560*1440 pixels'), ('UHD', '3840×2160 pixels'))
@@ -25,10 +30,8 @@ class Photo(models.Model):
     date = models.DateTimeField(auto_now_add = True,blank=True,null=True)
 
     def __str__(self):
-        return self.name+self.author.get_short_name()
+        return self.name+"  "+self.author.get_short_name()
 
-class Theme(models.Model):
-    name = models.CharField(max_length=32, default="", blank=False)
 
 
 
