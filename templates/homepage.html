@@ -1,50 +1,54 @@
 <!DOCTYPE html>
-{% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Homepage</title>
+    {% block title %}<title>Homepage</title>{% endblock %}
+    {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
+
 <body>
-    {% block content %}
+
     <h1>Photo Bank</h1>
    <header id="main-header">
 		<nav>
-			<ul>
-                <li><a class="site-name" href="{% url 'homepage' %}">INICIO</a></li>
+            {% block sidebar %}
+                <ul>
+                    <li><a class="site-name" href="{% url 'homepage' %}">INICIO</a></li>
 
-                {% for t in theme %}
-                    <li><a class="site-name" href="{% url 'abstract' %}">{{ t.name.upper }}</a></li>
-                {% endfor %}
+                    {% for t in theme %}
+                        <li><a class="site-name" href="{% url 'abstract' %}">{{ t.name.upper }}</a></li>
+                    {% endfor %}
 
-                <li class="site-name"></li>
-                <li>REGISTRARSE</li>
-				<!--<li><a href="#">Acerca de</a></li>-->
-			</ul>
+                    <li class="site-name"></li>
+                    <li>REGISTRARSE</li>
+
+                </ul>
+            {% endblock %}
 		</nav><!-- / nav -->
    </header>
 
    <section id="main-content">
-
 		<article>
 			<header>
-				<h1>Imagenes Recientes</h1>
+				{% block header %}<h1>Imagenes Recientes</h1> {% endblock %}
 			</header>
 
 			<div class="content">
-
+            {% block content %}
                 {% for i in photo %}
                     <img src="{{ i.picture.url }}" width="500px" />
                     <p> Title: {{ i.name }}
                     Author: {{ i.author }}
                     Theme:
                         {% for j in i.select_theme.all %}
-                         {{j.name }}
+                         {{j.name.lower }}
                         {% endfor %}
                     </p>
                 {% endfor %}
+            {% endblock %}
 
 			</div>
 
@@ -55,6 +59,5 @@
     <footer id="main-footer">
 		<p>&copy; 2019 - Django Model del proces</p>
 	</footer> <!-- / #main-footer -->
-{% endblock %}
 </body>
 </html>

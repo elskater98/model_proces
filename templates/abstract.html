@@ -1,60 +1,12 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Homepage</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
+{% extends "homepage.html" %}
 
-<body>
-    {% block content %}
-    <h1>Photo Bank</h1>
-   <header id="main-header">
-		<nav>
-			<ul>
-                <li><a class="site-name" href="{% url 'homepage' %}">INICIO</a></li>
-
-                {% for t in theme %}
-                    <li><a class="site-name" href="{% url 'abstract' %}">{{ t.name.upper }}</a></li>
-                {% endfor %}
-
-                <li class="site-name"></li>
-                <li>REGISTRARSE</li>
-				<!--<li><a href="#">Acerca de</a></li>-->
-			</ul>
-		</nav><!-- / nav -->
-   </header>
-
-   <section id="main-content">
-
-		<article>
-			<header>
-				<h1>Imagenes Recientes</h1>
-			</header>
-
-			<div class="content">
-
-                {% for i in photo %}
-                    <img src="{{ i.picture.url }}" width="500px" />
-                    <p> Title: {{ i.name }}
-                    Author: {{ i.author }}
-                    Theme:
-                        {% for j in i.select_theme.all %}
-                         {{j.name }}
-                        {% endfor %}
-                    </p>
-                {% endfor %}
-
-			</div>
-
-		</article> <!-- /article -->
-
-   </section> <!-- / #main-content -->
-
-    <footer id="main-footer">
-		<p>&copy; 2019 - Django Model del proces</p>
-	</footer> <!-- / #main-footer -->
+{% block title %}<title>Abstract</title>{% endblock %}
+{% block header %}<h1>Abstract</h1> {% endblock %}
+{% block content %}
+    {% for i in photo %}
+        <img src="{{ i.picture.url }}" width="500px" />
+        <p> Title: {{ i.name }}
+        Author: {{ i.author }}
+        </p>
+    {% endfor %}
 {% endblock %}
-</body>
-</html>
