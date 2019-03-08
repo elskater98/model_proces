@@ -17,14 +17,9 @@
             {% block sidebar %}
                 <ul>
                     <li><a class="site-name" href="{% url 'homepage' %}">INICIO</a></li>
-
-                    {% for t in theme %}
-                        <li><a class="site-name" href="{% url 'abstract' %}">{{ t.name.upper }}</a></li>
-                    {% endfor %}
-
+                        <li><a class="site-name" href="{% url 'abstract' %}"> ABSTRACT</a></li>
+                        <li><a class="site-name" href="{% url 'nature' %}">NATURE </a></li>
                     <li class="site-name"></li>
-                    <li>REGISTRARSE</li>
-
                 </ul>
             {% endblock %}
 		</nav><!-- / nav -->
@@ -40,12 +35,12 @@
             {% block content %}
                 {% for i in photo %}
                     <img src="{{ i.picture.url }}" width="500px" />
-                    <p> Title: {{ i.name }}
-                    Author: {{ i.author }}
-                    Theme:
-                        {% for j in i.select_theme.all %}
-                         {{j.name.lower }}
-                        {% endfor %}
+                    <p> <b>Title:</b> {{ i.name }}
+                        <b>Author:</b> {{ i.author }}
+                        <b>Theme:</b>
+                            {% for j in i.select_theme.all %}
+                                {{j.name.lower }}
+                            {% endfor %}
                     </p>
                 {% endfor %}
             {% endblock %}

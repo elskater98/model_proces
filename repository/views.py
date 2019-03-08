@@ -2,7 +2,6 @@ from django.shortcuts import render
 from .models import *
 # Create your views here.
 
-
 def homepage(request):
     photo = Photo.objects.all()
     theme= Theme.objects.all()
@@ -14,3 +13,9 @@ def abstract(request):
     theme = Theme.objects.all()
     author = Author.objects.all()
     return render(request, 'abstract.html', context={'photo':photo, 'theme':theme, 'author':author})
+
+def nature(request):
+    photo = Photo.objects.filter(select_theme__name__contains='nature')
+    theme = Theme.objects.all()
+    author = Author.objects.all()
+    return render(request, 'nature.html', context={'photo':photo, 'theme':theme, 'author':author})
