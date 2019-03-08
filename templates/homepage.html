@@ -19,9 +19,17 @@
                     <li><a class="site-name" href="{% url 'homepage' %}">INICIO</a></li>
                         <li><a class="site-name" href="{% url 'abstract' %}"> ABSTRACT</a></li>
                         <li><a class="site-name" href="{% url 'nature' %}">NATURE </a></li>
-                    <li class="site-name"></li>
+                        {% block registration %}
+                            {% if user.is_authenticated %}
+                                <li>Hi {{ user.username }}<a></a></li>
+                                <li><a class="site-name" href="{% url 'logout' %}"> LOGOUT</a></li>
+                            {% else %}
+                                <li><a href="{% url 'login' %}">LOGIN</a></li>
+                            {% endif %}
+                       {% endblock %}
                 </ul>
             {% endblock %}
+
 		</nav><!-- / nav -->
    </header>
 
