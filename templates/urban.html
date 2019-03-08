@@ -27,11 +27,14 @@
 			<div class="content">
             {% block content %}
                 {% for i in photo %}
-                    {% if i.select_theme == "URBAN" %}
-                    <img src="{{ i.picture.url }}" width="500px" />
-                    <p> Title: {{ i.name }}
-                    Author: {{ i.author }}</p>
-                    {% endif %}
+                    {% for j in i.select_theme.all %}
+                        <p>{{ j }}</p>
+                        {% if j != "urban" %}
+                            <img src="{{ i.picture.url }}" width="500px" />
+                            <p> Title: {{ i.name }}
+                                Author: {{ i.author }}</p>
+                        {% endif %}
+                    {% endfor %}
                 {% endfor %}
             {% endblock %}
 			</div>
