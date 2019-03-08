@@ -24,6 +24,7 @@
                                 <li>Hi {{ user.username }}<a></a></li>
                                 <li><a class="site-name" href="{% url 'logout' %}"> LOGOUT</a></li>
                             {% else %}
+                                <li><a href="{% url 'signup' %}">SIGN UP</a></li>
                                 <li><a href="{% url 'login' %}">LOGIN</a></li>
                             {% endif %}
                        {% endblock %}

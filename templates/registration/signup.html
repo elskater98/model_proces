@@ -1,0 +1,12 @@
+{% extends 'homepage.html' %}
+
+{% block title %}<title>SIGN UP</title>{% endblock %}
+{% block header %}<h1>SIGN UP</h1> {% endblock %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign up</button>
+  </form>
+{% endblock %}
