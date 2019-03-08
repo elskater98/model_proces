@@ -11,9 +11,7 @@ class Photo(models.Model):
 
     author = models.ForeignKey(User, default=1, on_delete=models.SET_DEFAULT)
 
-    RESOLUTION_THEMES=(('NATURE','NATURE'),('URBAN','URBAN'),('OTHER','OTHER'))
-
-    select_theme=models.CharField(max_length=16,blank=False,choices=RESOLUTION_THEMES,default='OTHER')
+    select_theme=models.ManyToManyField('Theme')
 
     RESOLUTION_STATUS = (('HD', '1280×720 píxels'), ('FHD', '1920×1080 pixels'),
                          ('QHD', '2560*1440 pixels'), ('UHD', '3840×2160 pixels'))
@@ -28,6 +26,10 @@ class Photo(models.Model):
 
     def __str__(self):
         return self.name+self.author.get_short_name()
+
+class Theme(models.Model):
+    name = models.CharField(max_length=32, default="", blank=False)
+
 
 
 
