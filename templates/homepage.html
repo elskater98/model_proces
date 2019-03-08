@@ -29,7 +29,12 @@
                 {% for i in photo %}
                     <img src="{{ i.picture.url }}" width="500px" />
                     <p> Title: {{ i.name }}
-                    Author: {{ i.author }}</p>
+                    Author: {{ i.author }}
+                    Theme:
+                        {% for j in i.select_theme.all %}
+                         {{j.name }}
+                        {% endfor %}
+                    </p>
                 {% endfor %}
             {% endblock %}
 			</div>

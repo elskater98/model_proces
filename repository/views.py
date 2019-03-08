@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from .models import Photo
+from .models import *
 # Create your views here.
 
 
 def homepage(request):
     photo = Photo.objects.all()
+    theme= Theme.objects.all()
     return render(request,'homepage.html',context={'photo':photo})
 
 def urban_page(request):
