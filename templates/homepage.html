@@ -46,10 +46,12 @@
                     <img src="{{ i.picture.url }}" width="500px" />
                     <p> <b>Title:</b> {{ i.name }}
                         <b>Author:</b> {{ i.author }}
+                    {% block theme %}
                         <b>Theme:</b>
                             {% for j in i.select_theme.all %}
                                 {{j.name.lower }}
                             {% endfor %}
+                    {% endblock %}
                     </p>
                 {% endfor %}
             {% endblock %}
