@@ -19,6 +19,7 @@
                     <li><a class="site-name" href="{% url 'homepage' %}">INICIO</a></li>
                         <li><a class="site-name" href="{% url 'abstract' %}"> ABSTRACT</a></li>
                         <li><a class="site-name" href="{% url 'nature' %}">NATURE </a></li>
+                        <li><a class="site-name" href="{% url 'minimal' %}">MINIMAL </a></li>
                         {% block registration %}
                             {% if user.is_authenticated %}
                                 <li>Hi {{ user.username }}<a></a></li>
